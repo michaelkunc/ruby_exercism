@@ -59,34 +59,34 @@ class ComplementTest < Minitest::Test
   end
 
   def test_rna_raises_argument_error
-    skip
+    # skip
     assert_raises(ArgumentError) { Complement.of_rna('T') }
   end
 
   def test_rna_raises_argument_error_on_completely_invalid_input
-    skip
+    # skip
     assert_raises(ArgumentError) { Complement.of_rna('XXX') }
   end
 
   def test_dna_raises_argument_error_on_completely_invalid_input
-    skip
+    # skip
     assert_raises(ArgumentError) { Complement.of_dna('XXX') }
   end
 
   def test_dna_raises_argument_error_on_partially_invalid_input
-    skip
+    # skip
     assert_raises(ArgumentError) { Complement.of_dna('ACGTXXXCTTAA') }
   end
 
   def test_rna_raises_argument_error_on_partially_invalid_input
-    skip
+    # skip
     assert_raises(ArgumentError) { Complement.of_rna('UGAAXXXGACAUG') }
   end
 
   # This test is for the sake of people providing feedback, so they
   # know which version of the exercise you are solving.
   def test_bookkeeping
-    skip
+    # skip
     assert_equal 2, Complement::VERSION
   end
 end
