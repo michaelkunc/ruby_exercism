@@ -9,9 +9,9 @@ class Raindrops
     if (prime_factors & CONVERSION.keys).empty?
       number.to_s
     else
-      response = []
-      prime_factors.each {|element| response << CONVERSION[element]}
-      response[0]
+      response = ''
+      prime_factors.each {|element| response <<  CONVERSION[element] unless CONVERSION[element].nil?}
+      response
     end
   end
 
