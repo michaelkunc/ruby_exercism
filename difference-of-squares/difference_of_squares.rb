@@ -1,7 +1,7 @@
 class Squares
   attr_accessor :number
 
-  VERSION = 1
+  VERSION = 2
 
   def initialize(number)
     @number = (1..number)
@@ -12,7 +12,7 @@ class Squares
   end
 
   def sum_of_squares
-    @number.inject {|sum, i| sum + i**2}
+    @number.reduce {|sum, i| sum + i**2}
   end
 
   def difference
