@@ -1,6 +1,6 @@
 class Fixnum
 
-  VERSION = 1
+  VERSION = 2
   ROMAN_NUMERALS = {
     1000 => "M",
      900 => "CM",
@@ -18,21 +18,11 @@ class Fixnum
   }
 
   def to_roman
-    result_string = ''
     number = self
-    if number == 0
-      result_string
-    else
-      ROMAN_NUMERALS.each do |key, value|
-        (number / key).times do
-          result_string << ROMAN_NUMERALS[key]
-          number = number - key
-        end
-      end
-      result_string
+    ROMAN_NUMERALS.reduce('') do |result, (key, value)|
+      quotient, number = number.divmod(key)
+      result << value * quotient
     end
-
-
   end
 
 end
