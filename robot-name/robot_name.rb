@@ -1,4 +1,5 @@
 class Robot
+  VERSION = 2
 
 attr_reader :name
 
