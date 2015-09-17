@@ -1,11 +1,10 @@
-class Prime
 
-  def self.nth(nth_prime)
-    VERSION = 1
-    raise ArgumentError if nth_prime == 0
-    primes = []
-    (1..nth_prime*100).each {|e| primes << e if prime?(e)}
-    primes[nth_prime]
+class Prime
+  VERSION = 2
+
+  def self.nth(nth_index)
+    raise ArgumentError, 'Number must be greater than zero' if nth_index == 0
+    (1..nth_index*100).select {|num| prime?(num)}[nth_index]
   end
 
   def prime?(number)
@@ -13,4 +12,3 @@ class Prime
   end
 
 end
-
