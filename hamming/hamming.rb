@@ -1,16 +1,13 @@
-class HammingTest < Minitest::Test
+class Hamming
+  VERSION = 3
 
-end
+  def self.compute(strand_a, strand_b)
+    validate_input(strand_a, strand_b)
+    strand_a.split('').zip(strand_b.split('')).map {|a, b| a==b}.count(false)
+  end
 
-class Hamming < HammingTest
-  VERSION = 2
-
-  def self.compute(first_string, second_string)
-    raise ArgumentError if first_string.length != second_string.length
-    distance = 0
-    return distance if first_string.eql?(second_string)
-    first_string.split('').each_with_index {|element, index| distance += 1 if element != second_string.split('')[index]}
-    return distance
+  def self.validate_input(strand_a, strand_b)
+    raise ArgumentError, 'Please enter two equal length strands' if strand_a.length != strand_b.length
   end
 
 end
