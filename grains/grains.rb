@@ -1,14 +1,11 @@
 class Grains
-  VERSION = 1
-  def self.square(square_number)
-    get_grains(square_number).last
-  end
-
-  def self.get_grains(square_number)
-    (square_number - 1).times.with_object([1]) { |i, a| a << a.last * 2 }
+  VERSION = 3
+  def self.square(number)
+    2 ** (number - 1)
   end
 
   def self.total
-    get_grains(64).reduce(:+)
+    square(65) - 1
   end
+
 end
