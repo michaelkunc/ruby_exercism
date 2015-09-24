@@ -1,9 +1,7 @@
-require 'set'
-
 class Complement
-    VERSION = 1
-    DNA_TO_RNA = {'G' => 'C', 'C' => 'G', 'T' => 'A', 'A' => 'U'}
-    RNA_TO_DNA = DNA_TO_RNA.invert
+  VERSION = 2
+  DNA_TO_RNA = { 'G' => 'C', 'C' => 'G', 'T' => 'A', 'A' => 'U' }
+  RNA_TO_DNA = DNA_TO_RNA.invert
 
   def self.of_dna(dna)
     validate_input(dna, DNA_TO_RNA)
@@ -18,12 +16,13 @@ class Complement
   private
 
   def self.convert(string, translation_hash)
-    return string.split('').map {|element| translation_hash[element]}.join('')
+    string.chars.each_with_object('') { |i, str| str << translation_hash[i] }
   end
 
   def self.validate_input(string, translation_hash)
-    raise ArgumentError unless translation_hash.keys.include?(string) || Set.new(translation_hash.keys) == Set.new(string.split(''))
+    error_message = 'Please enter a valid DNA or RNA string'
+    string.each_char do |char|
+      raise ArgumentError, error_message unless translation_hash.keys.include?(char)
+    end
   end
-
-
 end
