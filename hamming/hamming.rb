@@ -2,7 +2,7 @@ class Hamming
   VERSION = 1
   def self.compute(strand_a, strand_b)
     validate_input(strand_a, strand_b)
-    strand_a.chars.zip(strand_b.chars).count { |a, b| a != b }
+    (0...strand_a.length).count { |i| strand_a[i] != strand_b[i] }
   end
 
   def self.validate_input(strand_a, strand_b)
