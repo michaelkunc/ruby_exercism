@@ -1,12 +1,13 @@
 class Hamming
-  VERSION = 3
-
+  VERSION = 1
   def self.compute(strand_a, strand_b)
     validate_input(strand_a, strand_b)
-    strand_a.split('').zip(strand_b.split('')).map { |a, b| a == b }.count(false)
+    strand_a.chars.zip(strand_b.chars).count { |a, b| a != b }
   end
 
   def self.validate_input(strand_a, strand_b)
-    fail ArgumentError, 'Please enter two equal length strands' if strand_a.length != strand_b.length
+    if strand_a.length != strand_b.length
+      fail ArgumentError, 'DNA strands must be of equal length.'
+    end
   end
 end
